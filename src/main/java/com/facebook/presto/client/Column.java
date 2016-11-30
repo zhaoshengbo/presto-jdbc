@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.concurrent.Immutable;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 @Immutable
-public class Column
-{
+public class Column {
     private final String name;
     private final String type;
     private final ClientTypeSignature typeSignature;
@@ -31,28 +31,25 @@ public class Column
     public Column(
             @JsonProperty("name") String name,
             @JsonProperty("type") String type,
-            @JsonProperty("typeSignature") ClientTypeSignature typeSignature)
-    {
+            @JsonProperty("typeSignature") ClientTypeSignature typeSignature) {
         this.name = requireNonNull(name, "name is null");
         this.type = requireNonNull(type, "type is null");
         this.typeSignature = typeSignature;
     }
 
+
     @JsonProperty
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
     @JsonProperty
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
     @JsonProperty
-    public ClientTypeSignature getTypeSignature()
-    {
+    public ClientTypeSignature getTypeSignature() {
         return typeSignature;
     }
 }

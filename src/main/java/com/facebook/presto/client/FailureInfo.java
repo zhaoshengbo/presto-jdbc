@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
 
 @Immutable
 public class FailureInfo

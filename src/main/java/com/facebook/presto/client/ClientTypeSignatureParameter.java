@@ -16,6 +16,7 @@ package com.facebook.presto.client;
 import com.facebook.presto.spi.type.NamedTypeSignature;
 import com.facebook.presto.spi.type.ParameterKind;
 import com.facebook.presto.spi.type.TypeSignatureParameter;
+import com.facebook.presto.utils.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonParser;
@@ -27,7 +28,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
-import java.util.Objects;
 
 import static java.lang.String.format;
 

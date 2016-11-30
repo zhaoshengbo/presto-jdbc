@@ -13,39 +13,33 @@
  */
 package com.facebook.presto.jdbc;
 
-import java.util.Objects;
+import com.facebook.presto.utils.Objects;
 
 import static com.facebook.presto.client.IntervalDayTime.formatMillis;
 import static com.facebook.presto.client.IntervalDayTime.toMillis;
 
-public class PrestoIntervalDayTime
-{
+public class PrestoIntervalDayTime {
     private final long milliSeconds;
 
-    public PrestoIntervalDayTime(long milliSeconds)
-    {
+    public PrestoIntervalDayTime(long milliSeconds) {
         this.milliSeconds = milliSeconds;
     }
 
-    public PrestoIntervalDayTime(int day, int hour, int minute, int second, int millis)
-    {
+    public PrestoIntervalDayTime(int day, int hour, int minute, int second, int millis) {
         milliSeconds = toMillis(day, hour, minute, second, millis);
     }
 
-    public long getMilliSeconds()
-    {
+    public long getMilliSeconds() {
         return milliSeconds;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(milliSeconds);
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -57,8 +51,7 @@ public class PrestoIntervalDayTime
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return formatMillis(milliSeconds);
     }
 }

@@ -24,14 +24,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static java.util.Objects.requireNonNull;
 
 /**
  * Parses and extracts parameters from a Presto JDBC URL.
  */
-final class PrestoDriverUri
-{
+final class PrestoDriverUri {
     private static final String JDBC_URL_START = "jdbc:";
 
     private static final Splitter QUERY_SPLITTER = Splitter.on('&').omitEmptyStrings();
@@ -46,14 +45,12 @@ final class PrestoDriverUri
     private final boolean useSecureConnection;
 
     public PrestoDriverUri(String url)
-            throws SQLException
-    {
+            throws SQLException {
         this(parseDriverUrl(url));
     }
 
     private PrestoDriverUri(URI uri)
-            throws SQLException
-    {
+            throws SQLException {
         this.uri = requireNonNull(uri, "uri is null");
         this.address = HostAndPort.fromParts(uri.getHost(), uri.getPort());
 
@@ -63,28 +60,24 @@ final class PrestoDriverUri
         initCatalogAndSchema();
     }
 
-    public URI getJdbcUri()
-    {
+
+    public URI getJdbcUri() {
         return uri;
     }
 
-    public String getSchema()
-    {
+    public String getSchema() {
         return schema;
     }
 
-    public String getCatalog()
-    {
+    public String getCatalog() {
         return catalog;
     }
 
-    public URI getHttpUri()
-    {
+    public URI getHttpUri() {
         return buildHttpUri();
     }
 
-    private static Map<String, String> parseParameters(String query)
-    {
+    private static Map<String, String> parseParameters(String query) {
         Map<String, String> result = new HashMap<String, String>();
 
         if (query != null) {
@@ -99,13 +92,11 @@ final class PrestoDriverUri
     }
 
     private static URI parseDriverUrl(String url)
-            throws SQLException
-    {
+            throws SQLException {
         URI uri;
         try {
             uri = new URI(url.substring(JDBC_URL_START.length()));
-        }
-        catch (URISyntaxException e) {
+        } catch (URISyntaxException e) {
             throw new SQLException("Invalid JDBC URL: " + url, e);
         }
         if (isNullOrEmpty(uri.getHost())) {
@@ -121,11 +112,11 @@ final class PrestoDriverUri
     }
 
     private URI buildHttpUri() {
-        try{
+        try {
             String scheme = (address.getPort() == 443 || useSecureConnection) ? "https" : "http";
             URIBuilder uriBuilder = new URIBuilder();
             uriBuilder.setScheme(scheme).setHost(address.getHostText()).setPort(address.getPort());
-            return  uriBuilder.build();
+            return uriBuilder.build();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -133,8 +124,7 @@ final class PrestoDriverUri
     }
 
     private void initCatalogAndSchema()
-            throws SQLException
-    {
+            throws SQLException {
         String path = uri.getPath();
         if (isNullOrEmpty(uri.getPath()) || path.equals("/")) {
             return;

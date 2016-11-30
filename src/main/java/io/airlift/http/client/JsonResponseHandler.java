@@ -5,6 +5,7 @@
 
 package io.airlift.http.client;
 
+import com.facebook.presto.charset.StandardCharsets;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.io.ByteStreams;
 import com.google.common.net.MediaType;
@@ -17,7 +18,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Set;
 
 public class JsonResponseHandler<T> implements ResponseHandler<T> {

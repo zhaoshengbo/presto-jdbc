@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static com.facebook.presto.jdbc.PrestoResultSet.resultsException;
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
 
 public class PrestoStatement
         implements Statement {

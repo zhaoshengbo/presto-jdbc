@@ -13,23 +13,23 @@
  */
 package com.facebook.presto.client;
 
+import com.facebook.presto.charset.StandardCharsets;
 import com.google.common.collect.ImmutableMap;
 import io.airlift.units.Duration;
 
 import java.net.URI;
 import java.nio.charset.CharsetEncoder;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkArgument;
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static java.util.Objects.requireNonNull;
 
 public class ClientSession {
+
     private final URI server;
     private final String user;
     private final String source;
@@ -142,7 +142,7 @@ public class ClientSession {
         this.clientRequestTimeout = clientRequestTimeout;
 
         // verify the properties are valid
-        CharsetEncoder charsetEncoder = US_ASCII.newEncoder();
+        CharsetEncoder charsetEncoder = StandardCharsets.US_ASCII.newEncoder();
         for (Entry<String, String> entry : properties.entrySet()) {
             checkArgument(!entry.getKey().isEmpty(), "Session property name is empty");
             checkArgument(entry.getKey().indexOf('=') < 0, "Session property name must not contain '=': %s", entry.getKey());

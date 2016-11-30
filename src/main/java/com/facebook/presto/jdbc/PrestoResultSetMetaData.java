@@ -19,7 +19,8 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 public class PrestoResultSetMetaData
         implements ResultSetMetaData

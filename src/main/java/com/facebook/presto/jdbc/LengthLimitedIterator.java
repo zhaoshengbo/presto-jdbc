@@ -16,8 +16,8 @@ package com.facebook.presto.jdbc;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.Preconditions.checkArgument;
-import static java.util.Objects.requireNonNull;
 
 /**
  * This {@code Iterator} is like Guava's {@code Iterators.limit()} but uses a {@code long} limit instead of {@code int}.

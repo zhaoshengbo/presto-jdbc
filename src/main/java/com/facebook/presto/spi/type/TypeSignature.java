@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.*;
 
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableList;
-import static java.util.Objects.requireNonNull;
 
 public class TypeSignature {
     private String base;

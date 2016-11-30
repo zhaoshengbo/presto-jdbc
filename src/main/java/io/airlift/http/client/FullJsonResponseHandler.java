@@ -37,10 +37,10 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.net.HttpHeaders.CONTENT_TYPE;
 import static java.lang.String.format;
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class FullJsonResponseHandler<T> implements ResponseHandler<JsonResponse<T>> {
     private static final MediaType MEDIA_TYPE_JSON = MediaType.create("application", "json");
+    private static final Charset UTF_8 = Charset.forName("utf-8");
 
     public static <T> FullJsonResponseHandler<T> createFullJsonResponseHandler(JsonCodec<T> jsonCodec) {
         return new FullJsonResponseHandler<T>(jsonCodec);

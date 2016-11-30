@@ -23,7 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 public class PrestoArray
         implements Array

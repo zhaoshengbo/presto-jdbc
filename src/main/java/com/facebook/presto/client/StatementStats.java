@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 import javax.validation.constraints.NotNull;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.MoreObjects.toStringHelper;
-import static java.util.Objects.requireNonNull;
 
 @Immutable
 public class StatementStats

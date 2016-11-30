@@ -33,8 +33,8 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.net.*;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static io.airlift.json.JsonCodec.jsonCodec;
-import static java.util.Objects.requireNonNull;
 
 class QueryExecutor
         implements Closeable {

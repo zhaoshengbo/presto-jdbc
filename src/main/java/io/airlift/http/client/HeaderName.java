@@ -1,7 +1,7 @@
 package io.airlift.http.client;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static java.util.Locale.ENGLISH;
-import static java.util.Objects.requireNonNull;
 
 public final class HeaderName
 {

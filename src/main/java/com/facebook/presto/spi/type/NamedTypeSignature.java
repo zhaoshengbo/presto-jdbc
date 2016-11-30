@@ -13,10 +13,9 @@
  */
 package com.facebook.presto.spi.type;
 
+import com.facebook.presto.utils.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Objects;
 
 import static java.lang.String.format;
 

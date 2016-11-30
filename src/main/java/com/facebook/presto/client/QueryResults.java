@@ -30,11 +30,11 @@ import java.util.*;
 
 import static com.facebook.presto.spi.type.StandardTypes.*;
 import static com.facebook.presto.spi.type.TypeSignature.parseTypeSignature;
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.Iterables.unmodifiableIterable;
 import static java.util.Collections.unmodifiableList;
-import static java.util.Objects.requireNonNull;
 
 @Immutable
 public class QueryResults {

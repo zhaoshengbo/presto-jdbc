@@ -15,7 +15,7 @@ package com.facebook.presto.jdbc;
 
 import com.facebook.presto.client.StatementStats;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
 
 public final class QueryStats {
     private final String queryId;

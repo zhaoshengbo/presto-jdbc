@@ -25,10 +25,10 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.String.format;
 import static java.util.Collections.unmodifiableList;
-import static java.util.Objects.requireNonNull;
 
 @Immutable
 public class ClientTypeSignature {

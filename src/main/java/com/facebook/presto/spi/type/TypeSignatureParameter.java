@@ -17,8 +17,8 @@ import com.google.common.base.Optional;
 
 import java.util.Objects;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static java.lang.String.format;
-import static java.util.Objects.requireNonNull;
 
 public class TypeSignatureParameter {
     private final ParameterKind kind;

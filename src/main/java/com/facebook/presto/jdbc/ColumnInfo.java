@@ -20,7 +20,8 @@ import com.google.common.collect.ImmutableList;
 import java.sql.Types;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 class ColumnInfo {
     private static final int VARCHAR_MAX = 1024 * 1024 * 1024;
