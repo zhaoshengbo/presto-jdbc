@@ -112,7 +112,6 @@ public class PrestoDriver
         return false;
     }
 
-    @Override
     public Logger getParentLogger()
             throws SQLFeatureNotSupportedException
     {

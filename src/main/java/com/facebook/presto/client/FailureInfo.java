@@ -137,7 +137,7 @@ public class FailureInfo {
         private final String type;
 
         FailureException(String type, String message, FailureException cause) {
-            super(message, cause, true, true);
+            super(message, cause);
             this.type = requireNonNull(type, "type is null");
         }
 

@@ -1184,7 +1184,7 @@ public class PrestoDatabaseMetaData
                 "FROM system.jdbc.pseudo_columns\n" +
                 "ORDER BY TABLE_CAT, table_SCHEM, TABLE_NAME, COLUMN_NAME");
     }
-    
+
     public boolean generatedKeyAlwaysReturned()
             throws SQLException {
         return false;

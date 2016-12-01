@@ -394,7 +394,7 @@ public class TypeSignature {
     public int hashCode() {
         // TODO remove this hack together with hack from toString()
         if (getBase().equals(StandardTypes.VARCHAR) && parameters.isEmpty()) {
-            return Objects.hash(Integer.MAX_VALUE);
+            return com.facebook.presto.utils.Objects.hash(Integer.MAX_VALUE);
         }
         return com.facebook.presto.utils.Objects.hash(base.toLowerCase(Locale.ENGLISH), parameters);
     }
