@@ -98,7 +98,7 @@ class QueryExecutor
             if (proxy.type() == Proxy.Type.SOCKS) {
                 if (proxy.address() instanceof InetSocketAddress) {
                     InetSocketAddress address = (InetSocketAddress) proxy.address();
-                    return HostAndPort.fromParts(address.getHostString(), address.getPort());
+                    return HostAndPort.fromParts(address.getHostName(), address.getPort());
                 }
             }
         }

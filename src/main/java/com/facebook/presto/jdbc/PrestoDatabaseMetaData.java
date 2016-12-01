@@ -1175,7 +1175,6 @@ public class PrestoDatabaseMetaData
         throw new NotImplementedException("DatabaseMetaData", "getFunctionColumns");
     }
 
-    @Override
     public ResultSet getPseudoColumns(String catalog, String schemaPattern, String tableNamePattern, String columnNamePattern)
             throws SQLException {
         return selectEmpty("" +
@@ -1185,8 +1184,7 @@ public class PrestoDatabaseMetaData
                 "FROM system.jdbc.pseudo_columns\n" +
                 "ORDER BY TABLE_CAT, table_SCHEM, TABLE_NAME, COLUMN_NAME");
     }
-
-    @Override
+    
     public boolean generatedKeyAlwaysReturned()
             throws SQLException {
         return false;

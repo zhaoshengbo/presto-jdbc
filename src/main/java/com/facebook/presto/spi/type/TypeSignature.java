@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.*;
 
 
-import static com.facebook.presto.utils.Objects.requireNonNull;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableList;
@@ -255,8 +254,8 @@ public class TypeSignature {
     }
 
     private static List<TypeSignatureParameter> createNamedTypeParameters(List<TypeSignature> parameters, List<String> fieldNames) {
-        requireNonNull(parameters, "parameters is null");
-        requireNonNull(fieldNames, "fieldNames is null");
+        com.facebook.presto.utils.Objects.requireNonNull(parameters, "parameters is null");
+        com.facebook.presto.utils.Objects.requireNonNull(fieldNames, "fieldNames is null");
         verify(parameters.size() == fieldNames.size() || fieldNames.isEmpty(), "Number of parameters and fieldNames for ROW type doesn't match");
         List<TypeSignatureParameter> result = new ArrayList<TypeSignatureParameter>();
         for (int i = 0; i < parameters.size(); i++) {
@@ -378,8 +377,8 @@ public class TypeSignature {
             return true;
         }
 
-        return Objects.equals(this.base.toLowerCase(Locale.ENGLISH), other.base.toLowerCase(Locale.ENGLISH)) &&
-                Objects.equals(this.parameters, other.parameters);
+        return com.facebook.presto.utils.Objects.equals(this.base.toLowerCase(Locale.ENGLISH), other.base.toLowerCase(Locale.ENGLISH)) &&
+                com.facebook.presto.utils.Objects.equals(this.parameters, other.parameters);
     }
 
     private static boolean magicVarcharEquals(TypeSignature first, TypeSignature second) {
@@ -397,6 +396,6 @@ public class TypeSignature {
         if (getBase().equals(StandardTypes.VARCHAR) && parameters.isEmpty()) {
             return Objects.hash(Integer.MAX_VALUE);
         }
-        return Objects.hash(base.toLowerCase(Locale.ENGLISH), parameters);
+        return com.facebook.presto.utils.Objects.hash(base.toLowerCase(Locale.ENGLISH), parameters);
     }
 }
