@@ -14,6 +14,7 @@
 package com.facebook.presto.client;
 
 import com.facebook.presto.spi.type.*;
+import com.facebook.presto.utils.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableList;
@@ -22,7 +23,6 @@ import javax.annotation.concurrent.Immutable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.facebook.presto.utils.Objects.requireNonNull;

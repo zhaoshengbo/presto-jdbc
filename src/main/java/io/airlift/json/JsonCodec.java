@@ -30,10 +30,10 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
+import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.String.format;
-import static java.util.Objects.requireNonNull;
 
 public class JsonCodec<T> {
     private static final Supplier<ObjectMapper> OBJECT_MAPPER_SUPPLIER = Suppliers.memoize(new Supplier<ObjectMapper>() {

@@ -27,8 +27,7 @@ import java.util.regex.Pattern;
 import static com.facebook.presto.utils.Objects.requireNonNull;
 
 @Immutable
-public class FailureInfo
-{
+public class FailureInfo {
     private static final Pattern STACK_TRACE_PATTERN = Pattern.compile("(.*)\\.(.*)\\(([^:]*)(?::(.*))?\\)");
 
     private final String type;
@@ -45,8 +44,7 @@ public class FailureInfo
             @JsonProperty("cause") FailureInfo cause,
             @JsonProperty("suppressed") List<FailureInfo> suppressed,
             @JsonProperty("stack") List<String> stack,
-            @JsonProperty("errorLocation") @Nullable ErrorLocation errorLocation)
-    {
+            @JsonProperty("errorLocation") @Nullable ErrorLocation errorLocation) {
         requireNonNull(type, "type is null");
         requireNonNull(suppressed, "suppressed is null");
         requireNonNull(stack, "stack is null");
@@ -61,60 +59,52 @@ public class FailureInfo
 
     @NotNull
     @JsonProperty
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
     @Nullable
     @JsonProperty
-    public String getMessage()
-    {
+    public String getMessage() {
         return message;
     }
 
     @Nullable
     @JsonProperty
-    public FailureInfo getCause()
-    {
+    public FailureInfo getCause() {
         return cause;
     }
 
     @NotNull
     @JsonProperty
-    public List<FailureInfo> getSuppressed()
-    {
+    public List<FailureInfo> getSuppressed() {
         return suppressed;
     }
 
     @NotNull
     @JsonProperty
-    public List<String> getStack()
-    {
+    public List<String> getStack() {
         return stack;
     }
 
     @Nullable
     @JsonProperty
-    public ErrorLocation getErrorLocation()
-    {
+    public ErrorLocation getErrorLocation() {
         return errorLocation;
     }
 
-    public RuntimeException toException()
-    {
+    public RuntimeException toException() {
         return toException(this);
     }
 
-    private static FailureException toException(FailureInfo failureInfo)
-    {
+    private static FailureException toException(FailureInfo failureInfo) {
         if (failureInfo == null) {
             return null;
         }
         FailureException failure = new FailureException(failureInfo.getType(), failureInfo.getMessage(), toException(failureInfo.getCause()));
-        for (FailureInfo suppressed : failureInfo.getSuppressed()) {
-            failure.addSuppressed(toException(suppressed));
-        }
+        //for (FailureInfo suppressed : failureInfo.getSuppressed()) {
+        //failure.addSuppressed(toException(suppressed));
+        //}
         ImmutableList.Builder<StackTraceElement> stackTraceBuilder = ImmutableList.builder();
         for (String stack : failureInfo.getStack()) {
             stackTraceBuilder.add(toStackTraceElement(stack));
@@ -124,8 +114,7 @@ public class FailureInfo
         return failure;
     }
 
-    public static StackTraceElement toStackTraceElement(String stack)
-    {
+    public static StackTraceElement toStackTraceElement(String stack) {
         Matcher matcher = STACK_TRACE_PATTERN.matcher(stack);
         if (matcher.matches()) {
             String declaringClass = matcher.group(1);
@@ -135,8 +124,7 @@ public class FailureInfo
             if (fileName.equals("Native Method")) {
                 fileName = null;
                 number = -2;
-            }
-            else if (matcher.group(4) != null) {
+            } else if (matcher.group(4) != null) {
                 number = Integer.parseInt(matcher.group(4));
             }
             return new StackTraceElement(declaringClass, methodName, fileName, number);
@@ -145,24 +133,20 @@ public class FailureInfo
     }
 
     private static class FailureException
-            extends RuntimeException
-    {
+            extends RuntimeException {
         private final String type;
 
-        FailureException(String type, String message, FailureException cause)
-        {
+        FailureException(String type, String message, FailureException cause) {
             super(message, cause, true, true);
             this.type = requireNonNull(type, "type is null");
         }
 
-        public String getType()
-        {
+        public String getType() {
             return type;
         }
 
         @Override
-        public String toString()
-        {
+        public String toString() {
             String message = getMessage();
             if (message != null) {
                 return type + ": " + message;

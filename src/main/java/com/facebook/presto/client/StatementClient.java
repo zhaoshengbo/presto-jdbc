@@ -132,7 +132,7 @@ public class StatementClient
                 builder.setHeader(PrestoHeaders.PRESTO_SCHEMA, session.getSchema());
             }
             builder.setHeader(PrestoHeaders.PRESTO_TIME_ZONE, session.getTimeZoneId());
-            builder.setHeader(PrestoHeaders.PRESTO_LANGUAGE, session.getLocale().toLanguageTag());
+            builder.setHeader(PrestoHeaders.PRESTO_LANGUAGE, session.getLocale().getLanguage());
 
             Map<String, String> property = session.getProperties();
             for (Entry<String, String> entry : property.entrySet()) {

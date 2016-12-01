@@ -13,9 +13,9 @@
  */
 package com.facebook.presto.spi.type;
 
+import com.facebook.presto.utils.Objects;
 import com.google.common.base.Optional;
 
-import java.util.Objects;
 
 import static com.facebook.presto.utils.Objects.requireNonNull;
 import static java.lang.String.format;

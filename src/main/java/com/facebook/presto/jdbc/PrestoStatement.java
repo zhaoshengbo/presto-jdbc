@@ -95,10 +95,10 @@ public class PrestoStatement
     }
 
     public static int toIntExact(long value) {
-        if ((int)value != value) {
+        if ((int) value != value) {
             throw new ArithmeticException("integer overflow");
         }
-        return (int)value;
+        return (int) value;
     }
 
     public long getLargeMaxRows()
@@ -439,14 +439,12 @@ public class PrestoStatement
         return false;
     }
 
-    @Override
     public void closeOnCompletion()
             throws SQLException {
         checkOpen();
         closeOnCompletion.set(true);
     }
 
-    @Override
     public boolean isCloseOnCompletion()
             throws SQLException {
         checkOpen();

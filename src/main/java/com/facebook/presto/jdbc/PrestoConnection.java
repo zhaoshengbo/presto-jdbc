@@ -13,6 +13,7 @@
  */
 package com.facebook.presto.jdbc;
 
+import com.facebook.presto.charset.StandardCharsets;
 import com.facebook.presto.client.ClientSession;
 import com.facebook.presto.client.ServerInfo;
 import com.facebook.presto.client.StatementClient;
@@ -35,7 +36,6 @@ import static com.facebook.presto.utils.Objects.requireNonNull;
 import static com.google.common.base.MoreObjects.firstNonNull;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.Maps.fromProperties;
-import static java.nio.charset.StandardCharsets.US_ASCII;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
 public class PrestoConnection
@@ -397,14 +397,12 @@ public class PrestoConnection
         throw new SQLFeatureNotSupportedException("createStruct");
     }
 
-    @Override
     public void setSchema(String schema)
             throws SQLException {
         checkOpen();
         this.schema.set(schema);
     }
 
-    @Override
     public String getSchema()
             throws SQLException {
         checkOpen();
@@ -436,7 +434,7 @@ public class PrestoConnection
         requireNonNull(value, "value is null");
         checkArgument(!name.isEmpty(), "name is empty");
 
-        CharsetEncoder charsetEncoder = US_ASCII.newEncoder();
+        CharsetEncoder charsetEncoder = StandardCharsets.US_ASCII.newEncoder();
         checkArgument(name.indexOf('=') < 0, "Session property name must not contain '=': %s", name);
         checkArgument(charsetEncoder.canEncode(name), "Session property name is not US_ASCII: %s", name);
         checkArgument(charsetEncoder.canEncode(value), "Session property value is not US_ASCII: %s", value);
@@ -444,19 +442,16 @@ public class PrestoConnection
         sessionProperties.put(name, value);
     }
 
-    @Override
     public void abort(Executor executor)
             throws SQLException {
         close();
     }
 
-    @Override
     public void setNetworkTimeout(Executor executor, int milliseconds)
             throws SQLException {
         throw new SQLFeatureNotSupportedException("setNetworkTimeout");
     }
 
-    @Override
     public int getNetworkTimeout()
             throws SQLException {
         throw new SQLFeatureNotSupportedException("getNetworkTimeout");

@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.concurrent.Immutable;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 @Immutable
 public class NodeVersion
@@ -33,6 +34,7 @@ public class NodeVersion
     {
         this.version = requireNonNull(version, "version is null");
     }
+
 
     @JsonProperty
     public String getVersion()

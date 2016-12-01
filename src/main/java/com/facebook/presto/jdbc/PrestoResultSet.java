@@ -1384,13 +1384,11 @@ public class PrestoResultSet
         throw new SQLFeatureNotSupportedException("updateNClob");
     }
 
-    @Override
     public <T> T getObject(int columnIndex, Class<T> type)
             throws SQLException {
         throw new SQLFeatureNotSupportedException("getObject");
     }
 
-    @Override
     public <T> T getObject(String columnLabel, Class<T> type)
             throws SQLException {
         throw new SQLFeatureNotSupportedException("getObject");

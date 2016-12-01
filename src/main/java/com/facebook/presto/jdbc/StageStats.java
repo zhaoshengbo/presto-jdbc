@@ -18,7 +18,8 @@ import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import static com.facebook.presto.utils.Objects.requireNonNull;
+
 
 public final class StageStats {
     private final String stageId;
