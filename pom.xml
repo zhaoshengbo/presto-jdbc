@@ -4,7 +4,7 @@
 
     <groupId>com.ucar.presto</groupId>
     <artifactId>ucar-presto-jdbc</artifactId>
-    <version>1.0</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>presto-jdbc</name>
@@ -17,17 +17,25 @@
         <dep.joda.version>2.8.2</dep.joda.version>
         <dep.jackson.version>2.8.1</dep.jackson.version>
         <dep.validation-api.version>1.1.0.Final</dep.validation-api.version>
-        <dep.jackson-databind.version>2.8.5</dep.jackson-databind.version>
+        <dep.jackson-databind.version>2.7.8</dep.jackson-databind.version>
         <dep.httpclient.version>4.5.2</dep.httpclient.version>
         <dep.httpasyncclient.version>4.1.2</dep.httpasyncclient.version>
         <shadeBase>com.facebook.presto.jdbc.internal</shadeBase>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://maven.zuche.com/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
 
@@ -66,7 +74,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${dep.jackson-databind.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
